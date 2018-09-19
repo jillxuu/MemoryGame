@@ -1,12 +1,20 @@
 import React from 'react';
 import Card from './card';
 
-const scenarios = {firstCard: 1, secondCard: 2, noMatch: 3};
-
 export default class Game extends React.Component {
   constructor(props){
     super(props);
+    this.state = {size: this.props.game.size,board: populate(this.props.game.size)};
+  }
 
+  render(){
+    return (<div className="board">
+      {this.state.board.map((cardRows,rIdx)=>
+        {return cardRows.map((card, cIdx)=>{
+            return <span onClick={()=>this.makeGuess([rIdx, cIdx])}><Card card={this.state.board[rIdx][cIdx]}/></span>;
+          });}
+        )}
+    </div>);
   }
 
 }
