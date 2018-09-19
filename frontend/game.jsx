@@ -8,6 +8,12 @@ export default class Game extends React.Component {
     firstPos: null, secondPos: null, noMatch: false,
     currScore: 50,
     bestScore: 0};
+
+    this.makeGuess = this.makeGuess.bind(this);
+    this.won = this.won.bind(this);
+    this.lost = this.lost.bind(this);
+    this.reset = this.reset.bind(this);
+    this.difficulty = this.difficulty.bind(this);
   }
 
   makeGuess(pos){
@@ -75,6 +81,36 @@ export default class Game extends React.Component {
     });
   }
 
+  difficulty(level){
+    switch (level){
+      case 1:
+        this.setState({
+          size: 6,
+          firstPos: null,
+          secondPos: null,
+          board: populate(6)
+        });
+        break;
+      case 2:
+        this.setState({
+          size: 8,
+          firstPos: null,
+          secondPos: null,
+          board: populate(8)
+        });
+        break;
+      case 3:
+        this.setState({
+          size: 10,
+          firstPos: null,
+          secondPos: null,
+          board: populate(10)
+        });
+        break;
+    }
+
+  }
+
   render(){
     return (
       <div>
@@ -84,6 +120,11 @@ export default class Game extends React.Component {
           <p>Best Score: {this.state.bestScore}</p>
         </div>
         <div><button onClick={(e)=>this.reset(e)}>reset</button></div>
+        <div>
+          <button onClick={()=>this.difficulty(1)}>Easy</button>
+          <button onClick={()=>this.difficulty(2)}>Medium</button>
+          <button onClick={()=>this.difficulty(3)}>Hard</button>
+        </div>
         <div className="board">
           {this.state.board.map((cardRows,rIdx)=>
             {return cardRows.map((card, cIdx)=>{

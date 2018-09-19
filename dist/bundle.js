@@ -213,13 +213,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
@@ -244,6 +244,11 @@ function (_React$Component) {
       currScore: 50,
       bestScore: 0
     };
+    _this.makeGuess = _this.makeGuess.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.won = _this.won.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.lost = _this.lost.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.reset = _this.reset.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.difficulty = _this.difficulty.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -344,6 +349,38 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "difficulty",
+    value: function difficulty(level) {
+      switch (level) {
+        case 1:
+          this.setState({
+            size: 6,
+            firstPos: null,
+            secondPos: null,
+            board: populate(6)
+          });
+          break;
+
+        case 2:
+          this.setState({
+            size: 8,
+            firstPos: null,
+            secondPos: null,
+            board: populate(8)
+          });
+          break;
+
+        case 3:
+          this.setState({
+            size: 10,
+            firstPos: null,
+            secondPos: null,
+            board: populate(10)
+          });
+          break;
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -352,7 +389,19 @@ function (_React$Component) {
         onClick: function onClick(e) {
           return _this2.reset(e);
         }
-      }, "reset")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "reset")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.difficulty(1);
+        }
+      }, "Easy"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.difficulty(2);
+        }
+      }, "Medium"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.difficulty(3);
+        }
+      }, "Hard")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "board"
       }, this.state.board.map(function (cardRows, rIdx) {
         return cardRows.map(function (card, cIdx) {
