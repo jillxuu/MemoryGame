@@ -235,12 +235,65 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Game).call(this, props));
     _this.state = {
       size: _this.props.game.size,
-      board: populate(_this.props.game.size)
+      board: populate(_this.props.game.size),
+      firstPos: null,
+      secondPos: null,
+      noMatch: false
     };
     return _this;
   }
 
   _createClass(Game, [{
+    key: "makeGuess",
+    value: function makeGuess(pos) {
+      if (!this.state.board[pos[0]][pos[1]].revealed) {
+        if (this.state.firstPos === null) {
+          this.state.board[pos[0]][pos[1]].revealed = true;
+          this.setState({
+            noMatch: false,
+            board: this.state.board,
+            firstPos: pos
+          });
+        } else {
+          this.state.board[pos[0]][pos[1]].revealed = true;
+
+          if (this.compare(pos)) {
+            this.setState({
+              noMatch: false,
+              board: this.state.board,
+              firstPos: null
+            });
+          } else {
+            this.setState({
+              noMatch: true,
+              board: this.state.board,
+              secondPos: pos
+            });
+          }
+        }
+
+        if (this.state.noMatch) {
+          this.state.board[this.state.firstPos[0]][this.state.firstPos[1]].revealed = false;
+          this.state.board[this.state.secondPos[0]][this.state.secondPos[1]].revealed = false;
+          this.setState({
+            noMatch: false,
+            board: this.state.board,
+            firstPos: pos,
+            secondPos: null
+          });
+        }
+      }
+    }
+  }, {
+    key: "compare",
+    value: function compare(pos) {
+      if (this.state.board[pos[0]][pos[1]].value === this.state.board[this.state.firstPos[0]][this.state.firstPos[1]].value) {
+        return true;
+      }
+
+      return false;
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
