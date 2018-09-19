@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Card from './card';
+import Game from './game';
 
-const card = {value: 2, revealed: false};
+const game = {size:2};
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <Card card={card}/>,
+    <Game game={game}/>,
 	  document.getElementById('main')
   );
 });

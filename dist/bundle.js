@@ -99,17 +99,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./card */ "./frontend/card.jsx");
+/* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game */ "./frontend/game.jsx");
 
 
 
-var card = {
-  value: 2,
-  revealed: false
+var game = {
+  size: 2
 };
 document.addEventListener("DOMContentLoaded", function () {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    card: card
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_game__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    game: game
   }), document.getElementById('main'));
 });
 
@@ -186,6 +185,104 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
+
+/***/ }),
+
+/***/ "./frontend/game.jsx":
+/*!***************************!*\
+  !*** ./frontend/game.jsx ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Game; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./card */ "./frontend/card.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var scenarios = {
+  firstCard: 1,
+  secondCard: 2,
+  noMatch: 3
+};
+
+var Game =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Game, _React$Component);
+
+  function Game(props) {
+    _classCallCheck(this, Game);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Game).call(this, props));
+  }
+
+  return Game;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+function populate(size) {
+  var VALUES = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  var values = VALUES;
+  size = size * size / 2;
+
+  while (size > values.length) {
+    values = values.concat(values);
+  }
+
+  values = shuffle(values);
+  values = values.slice(0, size).concat(values.slice(0, size));
+  values = shuffle(values);
+  var array = new Array(Math.sqrt(size * 2)).fill(0).map(function () {
+    return new Array(Math.sqrt(size * 2)).fill(0);
+  });
+  var idx = 0;
+
+  for (var i = 0; i < Math.sqrt(size * 2); i++) {
+    for (var j = 0; j < Math.sqrt(size * 2); j++) {
+      var card = {
+        value: values[idx],
+        revealed: false
+      };
+      idx++;
+      array[i][j] = card;
+    }
+  }
+
+  return array;
+}
+
+function shuffle(array) {
+  var counter = array.length;
+
+  while (counter > 0) {
+    var index = Math.floor(Math.random() * counter);
+    counter--;
+    var temp = array[counter];
+    array[counter] = array[index];
+    array[index] = temp;
+  }
+
+  return array;
+}
 
 /***/ }),
 
