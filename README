@@ -1,0 +1,20 @@
+MemoryGame is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards. It aims to practice and reinforce memory skills.
+
+MemoryGame is built upon React.js.
+
+Features & Implementation
+
+Flipping Card
+MemoryGame has a board of cards to play with. Clicking on a hidden value card will flip it up. Its value will be shown to the player. Player can only flip two cards in one round. If these cards are matched in value, they will be visible, otherwise, they will be flipped back to be invisible again.
+
+Tracking Score
+MemoryGame has a tracking score platform that current score and best score will be kept tracked of. Once current player's current score is below 0, this game is over, and player loses. Otherwise, if current player flips all the cards up and it's still within time limit, this player wins and best score is updated if needed.
+
+Difficulty Level
+MemoryGame has difficulty level to be chosen. Each difficulty level represents different amount of cards that will be present. Players can choose the level as they desire.
+
+Reset Button
+Player can reset the game anytime they want. RESET will reset the best score to be 0.
+
+Countdown Timer
+MemoryGame has a countdown timer as another challenge in the game. If timer is running out of time and there are cards left in the board, current player loses.
