@@ -332,11 +332,27 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "reset",
+    value: function reset(e) {
+      e.preventDefault();
+      this.setState({
+        size: this.props.game.size,
+        firstPos: null,
+        secondPos: null,
+        board: populate(this.props.game.size),
+        currScore: 50
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.renderText()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Current Score: ", this.state.currScore), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Best Score: ", this.state.bestScore)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.renderText()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Current Score: ", this.state.currScore), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Best Score: ", this.state.bestScore)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick(e) {
+          return _this2.reset(e);
+        }
+      }, "reset")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "board"
       }, this.state.board.map(function (cardRows, rIdx) {
         return cardRows.map(function (card, cIdx) {

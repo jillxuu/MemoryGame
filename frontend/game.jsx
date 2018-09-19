@@ -65,14 +65,25 @@ export default class Game extends React.Component {
     }
   }
 
+  reset(e){
+    e.preventDefault();
+    this.setState({size: this.props.game.size,
+      firstPos: null,
+      secondPos: null,
+      board: populate(this.props.game.size),
+      currScore: 50
+    });
+  }
+
   render(){
     return (
       <div>
         <div>
-            <p>{this.renderText()}</p>
-            <p>Current Score: {this.state.currScore}</p>
-            <p>Best Score: {this.state.bestScore}</p>
-          </div>
+          <p>{this.renderText()}</p>
+          <p>Current Score: {this.state.currScore}</p>
+          <p>Best Score: {this.state.bestScore}</p>
+        </div>
+        <div><button onClick={(e)=>this.reset(e)}>reset</button></div>
         <div className="board">
           {this.state.board.map((cardRows,rIdx)=>
             {return cardRows.map((card, cIdx)=>{
