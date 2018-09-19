@@ -240,7 +240,9 @@ function (_React$Component) {
       board: populate(_this.props.game.size),
       firstPos: null,
       secondPos: null,
-      noMatch: false
+      noMatch: false,
+      currScore: 50,
+      bestScore: 0
     };
     return _this;
   }
@@ -261,6 +263,7 @@ function (_React$Component) {
 
           if (this.compare(pos)) {
             this.setState({
+              currScore: this.state.currScore + 5,
               noMatch: false,
               board: this.state.board,
               firstPos: null
@@ -278,6 +281,7 @@ function (_React$Component) {
           this.state.board[this.state.firstPos[0]][this.state.firstPos[1]].revealed = false;
           this.state.board[this.state.secondPos[0]][this.state.secondPos[1]].revealed = false;
           this.setState({
+            currScore: this.state.currScore - 3,
             noMatch: false,
             board: this.state.board,
             firstPos: pos,
@@ -296,11 +300,43 @@ function (_React$Component) {
       return false;
     }
   }, {
+    key: "won",
+    value: function won() {
+      for (var i = 0; i < this.state.size; i++) {
+        for (var j = 0; j < this.state.size; j++) {
+          if (this.state.board[i][j].revealed === false) {
+            return false;
+          }
+        }
+      }
+
+      return true;
+    }
+  }, {
+    key: "lost",
+    value: function lost() {
+      if (this.state.currScore < 0) {
+        return true;
+      }
+
+      return false;
+    }
+  }, {
+    key: "renderText",
+    value: function renderText() {
+      if (this.won()) {
+        this.state.bestScore = this.state.bestScore > this.state.currScore ? this.state.bestScore : this.state.currScore;
+        return "You won, congrats";
+      } else if (this.lost()) {
+        return "You lost, sorry";
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.renderText()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Current Score: ", this.state.currScore), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Best Score: ", this.state.bestScore)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "board"
       }, this.state.board.map(function (cardRows, rIdx) {
         return cardRows.map(function (card, cIdx) {
@@ -312,7 +348,7 @@ function (_React$Component) {
             card: _this2.state.board[rIdx][cIdx]
           }));
         });
-      }));
+      })));
     }
   }]);
 
