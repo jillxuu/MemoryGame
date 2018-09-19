@@ -1,12 +1,91 @@
+.title{
+  font-family: fantasy;
+  text-align: center;
+  font-size: 50px;
+}
+
+.time{
+  text-align: center;
+  font-size: 30px;
+  font-family: sans-serif;
+  background-color: coral;
+}
+
 .card {
   height: 200px;
   width: 200px;
   padding: 10px;
   margin: 30px;
-  border: 1px solid black;
+  border: 5px solid red;
   text-align: center;
   line-height: 200px;
   display: inline-block;
   font-size: 50px;
 
+}
+
+.head {
+  display: inline-flex;
+  margin-bottom: 100px;
+}
+
+.left{
+  font-size: 20px;
+  font-family: sans-serif;
+  margin-left: 30px;
+}
+
+.curr {
+  background-color: #92a8d1;
+  padding: 14px 28px;
+}
+
+.best {
+  background-color: #80ced6;
+  padding: 14px 28px;
+
+
+}
+
+.message{
+  font-size: 50px;
+}
+
+.button{
+  position: fixed;
+  right: 20px
+
+}
+
+
+.button1 {
+  border: 2px solid black;
+  background-color: #4CAF50;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+.button2 {
+
+  border: 2px solid black;
+  background-color: #008CBA;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.button3 {
+  border: 2px solid black;
+  background-color: #f44336;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.button4 {
+  border: 2px solid black;
+  background-color: #e7e7e7; color: black;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
 }

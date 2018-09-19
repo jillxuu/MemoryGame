@@ -347,7 +347,8 @@ function (_React$Component) {
         firstPos: null,
         secondPos: null,
         board: populate(this.props.game.size),
-        currScore: 50
+        currScore: 50,
+        bestScore: 0
       });
     }
   }, {
@@ -387,23 +388,39 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.renderText()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Current Score: ", this.state.currScore), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Best Score: ", this.state.bestScore)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "head"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "curr"
+      }, "Current Score: ", this.state.currScore), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "best"
+      }, "Best Score: ", this.state.bestScore), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "message"
+      }, this.renderText())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "button1",
         onClick: function onClick(e) {
           return _this2.reset(e);
         }
-      }, "reset")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "RESET"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "button2",
         onClick: function onClick() {
           return _this2.difficulty(1);
         }
       }, "Easy"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "button3",
         onClick: function onClick() {
           return _this2.difficulty(2);
         }
       }, "Medium"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "button4",
         onClick: function onClick() {
           return _this2.difficulty(3);
         }
-      }, "Hard")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Hard"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "board"
       }, this.state.board.map(function (cardRows, rIdx) {
         return cardRows.map(function (card, cIdx) {
@@ -566,7 +583,9 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Time Left: ", this.state.time.minute, "m ", this.state.time.second, "s", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.seconds === 0 ? this.renderText() : ""));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time"
+      }, "Time Left: ", this.state.time.minute, "m ", this.state.time.second, "s", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.seconds === 0 ? this.renderText() : ""));
     }
   }]);
 

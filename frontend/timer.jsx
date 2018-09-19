@@ -38,7 +38,7 @@ export default class CountdownTimer extends React.Component {
 
     render() {
       return(
-        <div>
+        <div className="time">
           Time Left: {this.state.time.minute}m {this.state.time.second}s
           <p>{this.state.seconds === 0?this.renderText() : ""}</p>
         </div>

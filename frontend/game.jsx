@@ -77,7 +77,8 @@ export default class Game extends React.Component {
       firstPos: null,
       secondPos: null,
       board: populate(this.props.game.size),
-      currScore: 50
+      currScore: 50,
+      bestScore: 0
     });
   }
 
@@ -114,16 +115,18 @@ export default class Game extends React.Component {
   render(){
     return (
       <div>
-        <div>
-          <p>{this.renderText()}</p>
-          <p>Current Score: {this.state.currScore}</p>
-          <p>Best Score: {this.state.bestScore}</p>
-        </div>
-        <div><button onClick={(e)=>this.reset(e)}>reset</button></div>
-        <div>
-          <button onClick={()=>this.difficulty(1)}>Easy</button>
-          <button onClick={()=>this.difficulty(2)}>Medium</button>
-          <button onClick={()=>this.difficulty(3)}>Hard</button>
+        <div className="head">
+          <div className="left">
+            <p className="curr">Current Score: {this.state.currScore}</p>
+            <p className="best">Best Score: {this.state.bestScore}</p>
+            <p className="message">{this.renderText()}</p>
+          </div>
+          <div className="button">
+            <button className="button1" onClick={(e)=>this.reset(e)}>RESET</button>
+            <button className="button2" onClick={()=>this.difficulty(1)}>Easy</button>
+            <button className="button3" onClick={()=>this.difficulty(2)}>Medium</button>
+            <button className="button4" onClick={()=>this.difficulty(3)}>Hard</button>
+          </div>
         </div>
         <div className="board">
           {this.state.board.map((cardRows,rIdx)=>
