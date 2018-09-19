@@ -3,7 +3,7 @@ import React from 'react';
 export default class CountdownTimer extends React.Component {
     constructor() {
       super();
-      this.state = { time: {}, seconds: 3};
+      this.state = { time: {}, seconds: 120};
       this.timer = 0;
       this.countDown = this.countDown.bind(this);
 
@@ -18,7 +18,7 @@ export default class CountdownTimer extends React.Component {
 
     convert(second){
       let minutes = Math.floor(second % (60 * 60) / 60);
-      let seconds = Math.ceil(second % (60 * 60) % 60) - 1;
+      let seconds = Math.floor(second % (60 * 60) % 60);
 
       return {"minute": minutes, "second": seconds};
     }
