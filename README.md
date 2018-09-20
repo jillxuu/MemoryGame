@@ -14,7 +14,7 @@ Clone or Download this repo to your local environment. Set up initial npm and we
 ### Flipping Card
 MemoryGame has a board of cards to play with. Clicking on a hidden value card will flip it up. Its value will be shown to the player. Player can only flip two cards in one round. If these cards are matched in value, they will be visible, otherwise, they will be flipped back to be invisible again.
 
-![board](https://imgur.com/EXBke6q)
+![board](images/board.png)
 
 ```
 makeGuess(pos){
@@ -42,7 +42,7 @@ makeGuess(pos){
 ### Tracking Score
 MemoryGame has a tracking score platform that current score and best score will be kept tracked of. Once current player's current score is below 0, this game is over, and player loses. Otherwise, if current player flips all the cards up and it's still within time limit, this player wins and best score is updated if needed.
 
-![score](https://imgur.com/a/EnXUMIZ)
+![score](images/scoreboard.png)
 
 ```
 this.state.bestScore = this.state.bestScore > this.state.currScore ? this.state.bestScore : this.state.currScore;
@@ -51,7 +51,7 @@ this.state.bestScore = this.state.bestScore > this.state.currScore ? this.state.
 ### Difficulty Level
 MemoryGame has difficulty level to be chosen. Each difficulty level represents different amount of cards that will be present. Players can choose the level as they desire.
 
-![Level](https://imgur.com/a/KJ5rvoh)
+![Level](images/button.png)
 
 ```
 case 1:
@@ -80,7 +80,7 @@ this.setState({size: this.props.game.size,
 ### Countdown Timer
 MemoryGame has a countdown timer as another challenge in the game. If timer is running out of time and there are cards left in the board, current player loses.
 
-![Timer](https://imgur.com/a/C5FBqwo)
+![Timer](images/timer.png)
 
 ```
 componentDidMount() {
