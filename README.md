@@ -14,7 +14,7 @@ Clone or Download this repo to your local environment. Set up initial npm and we
 ### Flipping Card
 MemoryGame has a board of cards to play with. Clicking on a hidden value card will flip it up. Its value will be shown to the player. Player can only flip two cards in one round. If these cards are matched in value, they will be visible, otherwise, they will be flipped back to be invisible again.
 
-![board](images/board.mov)
+![board](images/board.png)
 
 ```
 makeGuess(pos){
