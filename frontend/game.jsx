@@ -16,6 +16,9 @@ export default class Game extends React.Component {
     this.difficulty = this.difficulty.bind(this);
   }
 
+  //underlying memory game logic, flip first card if there is no card flipped
+  // flip second card if first card is flipped, match two flipped cards
+  //if match, keep both up, if not, flip both back
   makeGuess(pos){
     if (!this.state.board[pos[0]][pos[1]].revealed){
       if (this.state.firstPos === null){
@@ -37,6 +40,7 @@ export default class Game extends React.Component {
     }
   }
 
+  //compare whether two cards are a match
   compare(pos){
     if (this.state.board[pos[0]][pos[1]].value === this.state.board[this.state.firstPos[0]][this.state.firstPos[1]].value){
       return true;

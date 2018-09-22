@@ -8,6 +8,7 @@ export default class CountdownTimer extends React.Component {
       this.countDown = this.countDown.bind(this);
 
     }
+    //start timer once refresh the page
     componentDidMount() {
       this.countDown();
       this.setState({ time: this.convert(this.state.seconds)});
@@ -23,7 +24,7 @@ export default class CountdownTimer extends React.Component {
       return {"minute": minutes, "second": seconds};
     }
 
-
+    
     countDown() {
       let seconds = this.state.seconds - 1;
       this.setState({time: this.convert(this.state.seconds), seconds: seconds});
