@@ -47,7 +47,6 @@ export default class Game extends React.Component {
     }
     return false;
   }
-
   won(){
     for (let i = 0; i < this.state.size; i++){
       for (let j = 0; j < this.state.size; j++){

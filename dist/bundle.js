@@ -167,7 +167,8 @@ function (_React$Component) {
     };
     _this.renderValue = _this.renderValue.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
-  }
+  } //return card value based on state of revealed
+
 
   _createClass(Card, [{
     key: "renderValue",
@@ -330,7 +331,10 @@ function (_React$Component) {
     _this.reset = _this.reset.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.difficulty = _this.difficulty.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
-  }
+  } //underlying memory game logic, flip first card if there is no card flipped
+  // flip second card if first card is flipped, match two flipped cards
+  //if match, keep both up, if not, flip both back
+
 
   _createClass(Game, [{
     key: "makeGuess",
@@ -374,7 +378,8 @@ function (_React$Component) {
           });
         }
       }
-    }
+    } //compare whether two cards are a match
+
   }, {
     key: "compare",
     value: function compare(pos) {
@@ -616,7 +621,8 @@ function (_React$Component) {
     _this.timer = 0;
     _this.countDown = _this.countDown.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
-  }
+  } //start timer once refresh the page
+
 
   _createClass(CountdownTimer, [{
     key: "componentDidMount",
